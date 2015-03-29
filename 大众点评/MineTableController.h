@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MineTableController.h
 //  大众点评
 //
 //  Created by 毛催文 on 15/3/28.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MineTableController : UITableViewController
 
 @end
-
