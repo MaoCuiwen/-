@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B03384A41AC8DFD300ACE8C1 /* HomeWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03384A31AC8DFD300ACE8C1 /* HomeWebViewController.m */; };
+		B03384A61AC8ECF800ACE8C1 /* region.plist in Resources */ = {isa = PBXBuildFile; fileRef = B03384A51AC8ECF800ACE8C1 /* region.plist */; };
+		B03384A81AC8ED1000ACE8C1 /* category.plist in Resources */ = {isa = PBXBuildFile; fileRef = B03384A71AC8ED1000ACE8C1 /* category.plist */; };
+		B03384AC1AC8ED3C00ACE8C1 /* 引导页－1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B03384A91AC8ED3C00ACE8C1 /* 引导页－1.jpg */; };
+		B03384AD1AC8ED3C00ACE8C1 /* 引导页－2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B03384AA1AC8ED3C00ACE8C1 /* 引导页－2.jpg */; };
+		B03384AE1AC8ED3C00ACE8C1 /* 引导页－3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B03384AB1AC8ED3C00ACE8C1 /* 引导页－3.jpg */; };
+		B03384B31AC8EDDD00ACE8C1 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03384B21AC8EDDD00ACE8C1 /* WelcomeViewController.m */; };
 		B0339BF71AC7A5910018AD99 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B0339BE51AC7A5910018AD99 /* AFHTTPRequestOperation.m */; };
 		B0339BF81AC7A5910018AD99 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0339BE71AC7A5910018AD99 /* AFHTTPRequestOperationManager.m */; };
 		B0339BF91AC7A5910018AD99 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0339BE91AC7A5910018AD99 /* AFHTTPSessionManager.m */; };
@@ -27,7 +34,6 @@
 		B0339C1C1AC7BF3C0018AD99 /* DianpingApi.m in Sources */ = {isa = PBXBuildFile; fileRef = B0339C1B1AC7BF3C0018AD99 /* DianpingApi.m */; };
 		B0339C211AC7C6470018AD99 /* HomeBusinessCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0339C1F1AC7C6470018AD99 /* HomeBusinessCell.m */; };
 		B0339C251AC7CD600018AD99 /* businessInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B0339C241AC7CD600018AD99 /* businessInfo.m */; };
-		B0A7938B1AC7ECE100DAC8A4 /* 036.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A7938A1AC7ECE100DAC8A4 /* 036.png */; };
 		B0A7938D1AC7EEC700DAC8A4 /* HomeBusinessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A7938C1AC7EEC700DAC8A4 /* HomeBusinessCell.xib */; };
 		CC78127F1AC6C37D005EB43A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC78127E1AC6C37D005EB43A /* main.m */; };
 		CC7812821AC6C37D005EB43A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7812811AC6C37D005EB43A /* AppDelegate.m */; };
@@ -60,6 +66,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B03384A21AC8DFD300ACE8C1 /* HomeWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeWebViewController.h; sourceTree = "<group>"; };
+		B03384A31AC8DFD300ACE8C1 /* HomeWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeWebViewController.m; sourceTree = "<group>"; };
+		B03384A51AC8ECF800ACE8C1 /* region.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = region.plist; sourceTree = "<group>"; };
+		B03384A71AC8ED1000ACE8C1 /* category.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = category.plist; sourceTree = "<group>"; };
+		B03384A91AC8ED3C00ACE8C1 /* 引导页－1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "引导页－1.jpg"; sourceTree = "<group>"; };
+		B03384AA1AC8ED3C00ACE8C1 /* 引导页－2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "引导页－2.jpg"; sourceTree = "<group>"; };
+		B03384AB1AC8ED3C00ACE8C1 /* 引导页－3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "引导页－3.jpg"; sourceTree = "<group>"; };
+		B03384B11AC8EDDD00ACE8C1 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		B03384B21AC8EDDD00ACE8C1 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		B0339BE41AC7A5910018AD99 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		B0339BE51AC7A5910018AD99 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		B0339BE61AC7A5910018AD99 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -102,7 +117,6 @@
 		B0339C1F1AC7C6470018AD99 /* HomeBusinessCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeBusinessCell.m; sourceTree = "<group>"; };
 		B0339C231AC7CD600018AD99 /* businessInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = businessInfo.h; sourceTree = "<group>"; };
 		B0339C241AC7CD600018AD99 /* businessInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = businessInfo.m; sourceTree = "<group>"; };
-		B0A7938A1AC7ECE100DAC8A4 /* 036.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 036.png; sourceTree = "<group>"; };
 		B0A7938C1AC7EEC700DAC8A4 /* HomeBusinessCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeBusinessCell.xib; sourceTree = "<group>"; };
 		CC7812791AC6C37D005EB43A /* 大众点评.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "大众点评.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC78127D1AC6C37D005EB43A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -160,6 +174,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B03384AF1AC8EDB500ACE8C1 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				B03384B01AC8EDBE00ACE8C1 /* controller */,
+			);
+			name = Welcome;
+			sourceTree = "<group>";
+		};
+		B03384B01AC8EDBE00ACE8C1 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				B03384B11AC8EDDD00ACE8C1 /* WelcomeViewController.h */,
+				B03384B21AC8EDDD00ACE8C1 /* WelcomeViewController.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		B03384B71AC9428700ACE8C1 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				CC7812B21AC6CD80005EB43A /* GroupShopTableController.h */,
+				CC7812B31AC6CD80005EB43A /* GroupShopTableController.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		B03384B81AC9429800ACE8C1 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		B03384B91AC942A100ACE8C1 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
 		B0339BE01AC7A4F20018AD99 /* category */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,7 +314,7 @@
 		CC78127B1AC6C37D005EB43A /* 大众点评 */ = {
 			isa = PBXGroup;
 			children = (
-				B0A7938A1AC7ECE100DAC8A4 /* 036.png */,
+				B03384AF1AC8EDB500ACE8C1 /* Welcome */,
 				CC7812AB1AC6CC0B005EB43A /* main */,
 				CC7812AA1AC6CBFB005EB43A /* tool */,
 				CC7812A91AC6CBF4005EB43A /* other */,
@@ -276,6 +330,11 @@
 		CC78127C1AC6C37D005EB43A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B03384A91AC8ED3C00ACE8C1 /* 引导页－1.jpg */,
+				B03384AA1AC8ED3C00ACE8C1 /* 引导页－2.jpg */,
+				B03384AB1AC8ED3C00ACE8C1 /* 引导页－3.jpg */,
+				B03384A71AC8ED1000ACE8C1 /* category.plist */,
+				B03384A51AC8ECF800ACE8C1 /* region.plist */,
 				CC7812891AC6C37D005EB43A /* Images.xcassets */,
 				CC78128B1AC6C37D005EB43A /* LaunchScreen.xib */,
 				CC78127D1AC6C37D005EB43A /* Info.plist */,
@@ -314,8 +373,9 @@
 		CC7812A61AC6CBC7005EB43A /* 团购 */ = {
 			isa = PBXGroup;
 			children = (
-				CC7812B21AC6CD80005EB43A /* GroupShopTableController.h */,
-				CC7812B31AC6CD80005EB43A /* GroupShopTableController.m */,
+				B03384B91AC942A100ACE8C1 /* view */,
+				B03384B81AC9429800ACE8C1 /* model */,
+				B03384B71AC9428700ACE8C1 /* controller */,
 			);
 			name = "团购";
 			sourceTree = "<group>";
@@ -375,6 +435,8 @@
 			children = (
 				CC7812AF1AC6CD61005EB43A /* HomeTableController.h */,
 				CC7812B01AC6CD61005EB43A /* HomeTableController.m */,
+				B03384A21AC8DFD300ACE8C1 /* HomeWebViewController.h */,
+				B03384A31AC8DFD300ACE8C1 /* HomeWebViewController.m */,
 				CC7812D61AC70061005EB43A /* AreaTableController.h */,
 				CC7812D71AC70061005EB43A /* AreaTableController.m */,
 			);
@@ -486,10 +548,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B03384A81AC8ED1000ACE8C1 /* category.plist in Resources */,
+				B03384A61AC8ECF800ACE8C1 /* region.plist in Resources */,
 				CC78128D1AC6C37D005EB43A /* LaunchScreen.xib in Resources */,
+				B03384AE1AC8ED3C00ACE8C1 /* 引导页－3.jpg in Resources */,
 				CC78128A1AC6C37D005EB43A /* Images.xcassets in Resources */,
 				B0A7938D1AC7EEC700DAC8A4 /* HomeBusinessCell.xib in Resources */,
-				B0A7938B1AC7ECE100DAC8A4 /* 036.png in Resources */,
+				B03384AD1AC8ED3C00ACE8C1 /* 引导页－2.jpg in Resources */,
+				B03384AC1AC8ED3C00ACE8C1 /* 引导页－1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +573,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B03384A41AC8DFD300ACE8C1 /* HomeWebViewController.m in Sources */,
 				CC7812C41AC6D3C6005EB43A /* UIView+Extension.m in Sources */,
 				CC7812AE1AC6CC6F005EB43A /* BaseNavigationController.m in Sources */,
 				B0339C151AC7A59A0018AD99 /* UIButton+AFNetworking.m in Sources */,
@@ -530,6 +597,7 @@
 				CC7812BA1AC6CE63005EB43A /* MineTableController.m in Sources */,
 				CC78127F1AC6C37D005EB43A /* main.m in Sources */,
 				B0339C211AC7C6470018AD99 /* HomeBusinessCell.m in Sources */,
+				B03384B31AC8EDDD00ACE8C1 /* WelcomeViewController.m in Sources */,
 				B0339C251AC7CD600018AD99 /* businessInfo.m in Sources */,
 				CC7812BD1AC6D161005EB43A /* CustomNaviButton.m in Sources */,
 				CC7812C51AC6D3C6005EB43A /* UIImage+Extension.m in Sources */,

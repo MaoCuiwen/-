@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "TabBarBaseController.h"
+#import "WelcomeViewController.h"
+//#import "BaseNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -18,9 +20,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    TabBarBaseController * baseBar = [[TabBarBaseController alloc] init];
-    self.window.rootViewController = baseBar;
+    NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
+    BOOL isNewVersion = [userDefault boolForKey:@"isNewVersion"];
+    if (!isNewVersion) {
+        WelcomeViewController * welcome = [[WelcomeViewController alloc] init];
+        self.window.rootViewController = welcome;
+        [userDefault setBool:!isNewVersion forKey:@"isNewVersion"];
+    }
+    else
+    {
+        TabBarBaseController * baseBar = [[TabBarBaseController alloc] init];
+        self.window.rootViewController = baseBar;
+    }
     [self.window makeKeyAndVisible];
+  
+    
     return YES;
 }
 

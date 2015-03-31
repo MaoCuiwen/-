@@ -16,6 +16,7 @@
 #import "DianpingApi.h"
 #import "HomeBusinessCell.h"
 #import "businessInfo.h"
+#import "HomeWebViewController.h"
 
 @interface HomeTableController () <UICollectionViewDataSource,UICollectionViewDelegate,AreaTableControllerDelegate>
 
@@ -33,6 +34,7 @@
         [DianpingApi requestBussinessesWithCallBack:^(id obj) {
             _businessInfos = obj;
             [self.tableView reloadData];
+            NSLog(@"%d",_businessInfos.count);
         }];
     }
     return _businessInfos;
@@ -58,6 +60,25 @@
     [super viewDidLoad];
     self.tableView.rowHeight = 129;
     // 设置导航栏左侧按钮
+    [self addLeftItem];
+    
+    //设置导航栏中间的搜索框，自定义
+    [self addSearchBar];
+    
+    //自定义tableview headerview
+    [self addHeaderView];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:245/255.0 green:116/255.0 blue:58/255.0 alpha:1];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+}
+
+//设置首页导航栏左侧item
+-(void)addLeftItem
+{
     CustomNaviButton * leftItem = [[CustomNaviButton alloc] init];
     [leftItem setTitle:@"北京" forState:UIControlStateNormal];
     [leftItem setImage:[UIImage imageNamed:@"首页_06"] forState:UIControlStateNormal];
@@ -65,12 +86,15 @@
     [leftItem addTarget:self action:@selector(showArea:) forControlEvents:UIControlEventTouchUpInside];
     self.areaBtn = leftItem;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.areaBtn];
-    
-    //设置导航栏中间的搜索框，自定义
+}
+
+//设置首页导航栏中间搜索框
+-(void)addSearchBar
+{
     UITextField * searchField = [[UITextField alloc] init];
     searchField.size = CGSizeMake(200, 30);
     searchField.borderStyle = UITextBorderStyleRoundedRect;
-    searchField.backgroundColor = [UIColor redColor];
+    searchField.backgroundColor = [UIColor colorWithRed:235/255.0 green:73/255.0 blue:17/255.0 alpha:1];
     UIImageView * imgV = [[UIImageView alloc] init];
     imgV.image = [UIImage imageNamed:@"searchbar_textfield_search_icon"];
     imgV.width = imgV.image.size.width + 5;
@@ -82,8 +106,11 @@
     searchField.placeholder = @"输入商户名、地点";
     searchField.font = [UIFont systemFontOfSize:13];
     self.navigationItem.titleView = searchField;
-    
-    //自定义tableview headerview
+}
+
+//设置首页tableview的headerView
+-(void)addHeaderView
+{
     headerLayout * layout = [[headerLayout alloc] init];
     UICollectionView * header = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, 320, 150) collectionViewLayout:layout];
     header.delegate = self;
@@ -91,11 +118,9 @@
     header.backgroundColor = [UIColor whiteColor];
     [header registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"headercell"];
     self.tableView.tableHeaderView = header;
-    
-    
-    
 }
 
+//城市选择按钮的响应方法
 -(void)showArea:(CustomNaviButton *)btn
 {
 
@@ -158,7 +183,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    NSLog(@"%ld" , (long)indexPath.row);
+    HomeWebViewController * web = [[HomeWebViewController alloc] init];
+    BusinessInfo * info = self.businessInfos[indexPath.row];
+    web.webPath = info.businessPath;
+    [self.navigationController pushViewController:web animated:YES];
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -166,48 +194,10 @@
     return @"猜你喜欢";
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    NSLog(@"开始拖拽");
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -15,10 +15,10 @@
 {
     if (self = [super initWithFrame:frame]) {
         self.imageView.contentMode = UIViewContentModeCenter;
-//        self.imageView.backgroundColor = [UIColor yellowColor];
         self.titleLabel.textAlignment = NSTextAlignmentRight;
         self.titleLabel.font = [UIFont systemFontOfSize:15];
         self.adjustsImageWhenHighlighted = NO;
+//        [self setBackgroundColor:[UIColor blueColor]];
     }
     return self;
 }

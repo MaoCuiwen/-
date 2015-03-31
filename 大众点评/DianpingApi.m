@@ -22,7 +22,6 @@
     NSString *path = @"http://api.dianping.com/v1/business/find_businesses";
     NSDictionary *params = @{@"city": @"北京"};
     path = [DianpingApi serializeURL:path params:params];
-//    NSLog(@"%@",path);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:path]];
     
     AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc]initWithRequest:request];
@@ -37,11 +36,13 @@
             NSString * name = [[initialName componentsSeparatedByString:@"("] firstObject];
             NSNumber * priceN = [dict objectForKey:@"avg_price"];
             NSString * price = [priceN stringValue];
+            price = [NSString stringWithFormat:@"%@元",price];
             NSNumber * saleCountN = [dict objectForKey:@"deal_count"];
             NSString * saleCount = [saleCountN stringValue];
             NSString * descrip = [dict objectForKey:@"address"];
             NSString * imageURL = [dict objectForKey:@"s_photo_url"];
-            BusinessInfo * info = [BusinessInfo businessInfoWithName:name andPrice:price andDescrip:descrip andSaleCount:saleCount andImageURL:imageURL];
+            NSString * businessPath = [dict objectForKey:@"business_url"];
+            BusinessInfo * info = [BusinessInfo businessInfoWithName:name andPrice:price andDescrip:descrip andSaleCount:saleCount andImageURL:imageURL andBusinessPath:businessPath];
             [arrM addObject:info];
         }
         NSArray * arr = [arrM mutableCopy];
@@ -55,6 +56,41 @@
     
     
     
+}
++(void)requestGroupInfomationWithCallBack:(Callback)callBack
+{
+    NSString * path = @"http://api.dianping.com/v1/deal/find_deals";
+    NSDictionary * params = @{@"city":@"北京"};
+    path = [DianpingApi serializeURL:path params:params];
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:path]];
+    AFHTTPRequestOperation * operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary * allInfomation = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+        //解析数据
+        NSArray * infos = [allInfomation objectForKey:@"deals"];
+        NSMutableArray * arrM = [NSMutableArray array];
+        for (NSDictionary * dict in infos) {
+            NSString * name = [dict objectForKey:@"title"];
+            NSNumber * priceN = [dict objectForKey:@"current_price"];
+            NSString * price = [priceN stringValue];
+            price = [NSString stringWithFormat:@"%@元",price];
+            NSNumber * saleCountN = [dict objectForKey:@"purchase_count"];
+            NSString * saleCount = [saleCountN stringValue];
+            NSString * descrip = [dict objectForKey:@"description"];
+            NSString * imageURL = [dict objectForKey:@"image_url"];
+            NSString * businessPath = [dict objectForKey:@"deal_h5_url"];
+            BusinessInfo * info = [BusinessInfo businessInfoWithName:name andPrice:price andDescrip:descrip andSaleCount:saleCount andImageURL:imageURL andBusinessPath:businessPath];
+            [arrM addObject:info];
+        }
+        NSArray * arr = [arrM mutableCopy];
+        
+        callBack(arr);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"请求失败");
+    }];
+    [operation start];
 }
 + (NSString *)serializeURL:(NSString *)baseURL params:(NSDictionary *)params
 {

@@ -10,9 +10,20 @@
 
 @interface AreaTableController ()
 
+@property(nonatomic,strong)NSDictionary * city;
+
 @end
 
 @implementation AreaTableController
+
+-(NSDictionary *)city
+{
+    if (!_city) {
+        NSString * path = [[NSBundle mainBundle] pathForResource:@"region" ofType:@"plist"];
+        _city = [NSDictionary dictionaryWithContentsOfFile:path];
+    }
+    return _city;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,11 +34,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 1;
+    return self.city.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 18;
+    NSArray * regions = [self.city allKeys];
+    NSString * regionName = regions[section];
+    NSArray * districts = [self.city objectForKey:regionName];
+    return districts.count;
 }
 
 
@@ -37,8 +51,13 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"假数据-----%ld",indexPath.row];
     
+    cell.textLabel.text = [NSString stringWithFormat:@"假数据-----%ld",indexPath.row];
+    NSArray * regions = [self.city allKeys];
+    NSString * regionName = regions[indexPath.section];
+    NSArray * districts = [self.city objectForKey:regionName];
+    NSString * districtName = districts[indexPath.row];
+    cell.textLabel.text = districtName;
     return cell;
 }
 
@@ -46,8 +65,18 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     if ([self.delegate respondsToSelector:@selector(areaTableController:didPassData:)]) {
-        [self.delegate areaTableController:self didPassData:@"深圳"];
+        UITableViewCell * selectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
+        
+        [self.delegate areaTableController:self didPassData:selectedCell.textLabel.text];
     }
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSArray * regions = [self.city allKeys];
+    NSString * regionName = regions[section];
+    return regionName;
+    
 }
 /*
 // Override to support conditional editing of the table view.

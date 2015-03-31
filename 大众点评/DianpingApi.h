@@ -10,4 +10,5 @@
 typedef void (^Callback)(id obj);
 @interface DianpingApi : NSObject
 +(void)requestBussinessesWithCallBack:(Callback)callBack;
++(void)requestGroupInfomationWithCallBack:(Callback)callBack;
 @end

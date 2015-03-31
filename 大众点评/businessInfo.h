@@ -14,5 +14,6 @@
 @property(copy,nonatomic)NSString * saleCount;
 @property(copy,nonatomic)NSString * descrip;
 @property(copy,nonatomic)NSString * imageURL;
-+(instancetype)businessInfoWithName:(NSString *)name andPrice:(NSString *)price andDescrip:(NSString *)descrip andSaleCount:(NSString *)saleCount andImageURL:(NSString *)imageURL;
+@property(copy,nonatomic)NSString * businessPath;
++(instancetype)businessInfoWithName:(NSString *)name andPrice:(NSString *)price andDescrip:(NSString *)descrip andSaleCount:(NSString *)saleCount andImageURL:(NSString *)imageURL andBusinessPath:(NSString *)businessPath;
 @end
