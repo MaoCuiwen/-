@@ -17,25 +17,31 @@
 #import "HomeBusinessCell.h"
 #import "businessInfo.h"
 #import "HomeWebViewController.h"
+#import "MCWTgFooterView.h"
 
-@interface HomeTableController () <UICollectionViewDataSource,UICollectionViewDelegate,AreaTableControllerDelegate>
+
+@interface HomeTableController () <UICollectionViewDataSource,UICollectionViewDelegate,AreaTableControllerDelegate,MCWTgFooterViewDelegate>
 
 @property(nonatomic,strong)NSArray * headerDatas;
 @property(nonatomic,strong)CustomNaviButton * areaBtn;
-@property(nonatomic,strong)NSArray * businessInfos;
+@property(nonatomic,strong)NSMutableArray * businessInfos;
+@property(nonatomic,strong)MCWTgFooterView * footerView;
+@property(nonatomic,assign)int refreshCount;
 
 @end
 
 @implementation HomeTableController
 
--(NSArray *)businessInfos
+-(NSMutableArray *)businessInfos
 {
     if (!_businessInfos) {
+        NSNumber * num = @(self.refreshCount);
+        NSDictionary * params = @{@"city": @"北京",@"page":num};
         [DianpingApi requestBussinessesWithCallBack:^(id obj) {
             _businessInfos = obj;
             [self.tableView reloadData];
-            NSLog(@"%d",_businessInfos.count);
-        }];
+        } andParams:params];
+        self.refreshCount;
     }
     return _businessInfos;
 }
@@ -67,6 +73,9 @@
     
     //自定义tableview headerview
     [self addHeaderView];
+    
+    //tableView底部视图
+    [self addFooterView];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -74,6 +83,32 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:245/255.0 green:116/255.0 blue:58/255.0 alpha:1];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+}
+
+
+-(void)addFooterView
+{
+    self.footerView = [[[NSBundle mainBundle] loadNibNamed:@"MCWTgFooterView" owner:nil options:nil] lastObject];
+    self.footerView.delegate = self;
+    self.tableView.tableFooterView = self.footerView;
+    
+}
+
+#pragma mark - MCWTgFooterViewDelegate
+
+-(void)tgFooterViewDidClick:(MCWTgFooterView *)footerView
+{
+    NSNumber * num = @(self.refreshCount);
+    NSDictionary * params = @{@"city": @"北京",@"page":num};
+    [DianpingApi requestBussinessesWithCallBack:^(id obj) {
+        NSArray * moreInfos = obj;
+        for (BusinessInfo * info in moreInfos) {
+            [self.businessInfos addObject:info];
+        }
+        NSLog(@"%d",self.businessInfos.count);
+        [self.tableView reloadData];
+    } andParams:params];
+    self.refreshCount ++;
 }
 
 //设置首页导航栏左侧item
@@ -155,7 +190,7 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"-----------------%ld--------",indexPath.row);
+    NSLog(@"-----------------%d--------",indexPath.row);
 }
 
 

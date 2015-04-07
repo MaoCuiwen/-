@@ -21,10 +21,11 @@
 -(NSArray *)groupInfos
 {
     if (!_groupInfos) {
+        NSDictionary * params = @{@"city": @"北京",@"page":@(1),@"platform":@(2)};
         [DianpingApi requestGroupInfomationWithCallBack:^(id obj) {
             _groupInfos = obj;
             [self.tableView reloadData];
-        }];
+        } andParams:params];
     }
     return _groupInfos;
 }

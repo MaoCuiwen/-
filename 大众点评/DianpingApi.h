@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 typedef void (^Callback)(id obj);
 @interface DianpingApi : NSObject
-+(void)requestBussinessesWithCallBack:(Callback)callBack;
-+(void)requestGroupInfomationWithCallBack:(Callback)callBack;
++(void)requestBussinessesWithCallBack:(Callback)callBack andParams:(NSDictionary *)params;
++(void)requestGroupInfomationWithCallBack:(Callback)callBack andParams:(NSDictionary *)params;
 @end

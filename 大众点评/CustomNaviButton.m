@@ -18,7 +18,6 @@
         self.titleLabel.textAlignment = NSTextAlignmentRight;
         self.titleLabel.font = [UIFont systemFontOfSize:15];
         self.adjustsImageWhenHighlighted = NO;
-//        [self setBackgroundColor:[UIColor blueColor]];
     }
     return self;
 }

@@ -10,17 +10,16 @@
 #import <CommonCrypto/CommonCryptor.h>
 #import "DianpingApi.h"
 #import "businessInfo.h"
-#define kAPP_KEY @"622195982"
-#define kAPP_SECRET @"1a279951329c466b80ce39ed88d34b3b"
+#define kAPP_KEY @"9535837312"
+#define kAPP_SECRET @"82e50267cf564e5a828fb4917542902d"
 
 
 @implementation DianpingApi
 
 
-+(void)requestBussinessesWithCallBack:(Callback)callBack{
++(void)requestBussinessesWithCallBack:(Callback)callBack andParams:(NSDictionary *)params{
     
     NSString *path = @"http://api.dianping.com/v1/business/find_businesses";
-    NSDictionary *params = @{@"city": @"北京"};
     path = [DianpingApi serializeURL:path params:params];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:path]];
     
@@ -57,10 +56,9 @@
     
     
 }
-+(void)requestGroupInfomationWithCallBack:(Callback)callBack
++(void)requestGroupInfomationWithCallBack:(Callback)callBack andParams:(NSDictionary *)params
 {
     NSString * path = @"http://api.dianping.com/v1/deal/find_deals";
-    NSDictionary * params = @{@"city":@"北京"};
     path = [DianpingApi serializeURL:path params:params];
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:path]];
     AFHTTPRequestOperation * operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
